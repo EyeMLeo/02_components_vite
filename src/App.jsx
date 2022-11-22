@@ -1,34 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+function SectionTitle(props) {
+  // console.log('props ===', props);
+  return <h2 className='sectionTitle'>{props.title}</h2>;
 }
 
-export default App
+function Icon(props) {
+  // console.log('props ===', props);
+  return <i className={`fa ${props.iconName} fa-3x`} aria-hidden='true'></i>;
+}
+
+function Grid() {
+  return (
+    <div className='grid'>
+      <SeviceCard title='Business Consulting' icon='fa-address-book' link='/about.html' />
+      <SeviceCard />
+      <SeviceCard />
+    </div>
+  );
+}
+
+function SeviceCard(props) {
+  return (
+    <div className='card'>
+      <Icon className='card__icon' iconName={props.icon} />
+      <h3>{props.title}</h3>
+      <p className='card__text'>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos dolor atque exercitationem
+      </p>
+      <a href={props.link} className='card__link'>
+        Learn more
+      </a>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className='App container'>
+      <SectionTitle title='Musu paslaugos' size='large' />
+      <Grid />
+      {/* <SectionTitle title='About us' /> */}
+    </div>
+  );
+}
+
+export default App;
